@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>두두</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="/static/scheduler/css/style.css" />
+    <!-- jquery -->
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <!-- bootstrap -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/3.0.0/css/bootstrap-datetimepicker.min.css" rel="stylesheet" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.8.2/moment-with-locales.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/3.0.0/js/bootstrap-datetimepicker.min.js"></script>
+    <script src="/static/scheduler/js/main.js"></script>
+</head>
+<body>
+    <div id="space-input-schedule" class="header">
+        <h2>두두</h2>
+        <table id="schedule-inputter" border="1">
+            <tr>
+                <th class="schedule-inputter-el" colspan="2">
+                    <input class="schedule-inputter-input" type="text" id="title" placeholder="Title">
+                </th>
+            </tr>
+            <tr>
+                <th class="schedule-inputter-el schedule-inputter-header" rowspan="1">
+                    start
+                </th>
+                <th class="schedule-inputter-el schedule-inputter-header">
+                    end
+                </th>
+            </tr>
+            <tr>
+                <th class="schedule-inputter-el" rowspan="1">
+                    <input class="schedule-inputter-input" type="date" id="date-start">
+                </th>
+                <td class="schedule-inputter-el">
+                    <input class="schedule-inputter-input" type="date" id="date-end">
+                </td>
+            </tr>
+            <tr>
+                <th class="schedule-inputter-el" rowspan="1">
+                    <input class="schedule-inputter-input" type="time" id="time-start">
+                </th>
+                <td class="schedule-inputter-el">
+                    <input class="schedule-inputter-input" type="time" id="time-end">
+                </td>
+            </tr>
+            <tr>
+                <th class="schedule-inputter-el" colspan="2">
+                    <input type="text" id="text" class="schedule-inputter-input" value="Description">
+                </th>
+            </tr> 
+            <tr>
+                <th class="schedule-inputter-el schedule-inputter-el-addBtn" colspan="2">
+                    <input type="button" id="addBtn" class="schedule-inputter-input addBtn" value="Add Schedule" onclick="addSchedule()">
+                </th>
+            </tr>
+            <!-- <tr>
+                <th class="schedule-inputter-el" colspan="2">
+                    <input type="checkbox" id="allDay">
+                </th>
+            </tr> -->
+        </table>
+    </div>
+    <div>
+        <table class="schedule-printer">
+            <tr>
+                <th class="schedule-printer-el schedule-printer-header">No</th>
+                <th class="schedule-printer-el schedule-printer-header">Status</th>
+                <th class="schedule-printer-el schedule-printer-header">Schedule Title</th>
+                <th class="schedule-printer-el schedule-printer-header">Date Start</th>
+                <th class="schedule-printer-el schedule-printer-header">Date End</th>
+            </tr>
+            {% for sd in schedule %}
+            <tr>
+                <td>{{ sd.id }}</td>
+                <td>{{ sd.status }}</td>
+                <td>{{ sd.title }}</td>
+                <td>{{ sd.dt_start }}</td>
+                <td>{{ sd.dt_end }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+</body>
+</html>
